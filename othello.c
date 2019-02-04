@@ -32,7 +32,16 @@ void initializeBoard(char board[][SIZE])
 	{
 		for (int j = 0; j < SIZE; j++)
 		{
-			board[i][j] = '-';
+		    if((i == 3 && j == 3) || (i == 4 && j == 3))
+            {
+		        board[i][j] = 'W';
+            }
+		    else if((i == 4 && j == 3) || (i==4 && j == 4))
+            {
+		        board[i][j] = 'B';
+            }
+		    else
+			    board[i][j] = '-';
 		}
 	}
 }
