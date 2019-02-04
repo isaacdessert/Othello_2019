@@ -32,11 +32,11 @@ void initializeBoard(char board[][SIZE])
 	{
 		for (int j = 0; j < SIZE; j++)
 		{
-		    if((i == 3 && j == 3) || (i == 4 && j == 3))
+		    if((i == 3 || i == 4) && j ==3)
             {
 		        board[i][j] = 'W';
             }
-		    else if((i == 4 && j == 3) || (i==4 && j == 4))
+		    else if((j == 3 || j == 4) && i == 4)
             {
 		        board[i][j] = 'B';
             }
@@ -92,5 +92,28 @@ bool isGameOver(char board[][SIZE])
 // In case of a tie, it returns EMPTY
 char checkWinner(char board[][SIZE])
 {
-	return EMPTY;	// REPLACE THIS WITH YOUR IMPLEMENTATION
+	int WbiteCount = 0;
+	int BlackCount = 0;
+	char Winner = EMPTY;
+
+
+	for(int i = 0; i < SIZE; i++)
+	{
+		for(int j = 0; j < SIZE; j++){
+			if(board[i][j] == 'W')
+				WhiteCount++;
+			else if(board[i][j] == 'B')
+				BlackCount++;
+		}
+	}
+
+	if(isGameOver)
+	{
+		if(WhiteCount > BlackCount)
+			Winner = WHITE;
+		else if(BlackCount > WhiteCount)
+			Winner = BLACK;
+	}
+
+	return Winner;
 }
