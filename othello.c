@@ -28,7 +28,13 @@ void displayBoard(char board[][SIZE])
 // Initializes the board with start configuration of discs (see project specs)
 void initializeBoard(char board[][SIZE])
 {
-	// COMPLETE THIS FUNCTION
+	for (int i = 0; i < SIZE; i++)
+	{
+		for (int j = 0; j < SIZE; j++)
+		{
+			board[i][j] = '-';
+		}
+	}
 }
 
 // Returns true if moving the disc to location row,col is valid; else returns false
@@ -40,7 +46,10 @@ bool isValidMove(char board[][SIZE], int row, int col, char disc)
 // Places the disc at location row,col and flips the opponent discs as needed
 void placeDiscAt(char board[][SIZE], int row, int col, char disc)
 {
-	// COMPLETE THIS FUNCTION
+	if(isValidMoveAvailable(board, disc) && isValidMove(board,row,col, disc))
+	{
+		board[row][col] = disc;
+	}
 }
 
 // Returns true if a valid move for disc is available; else returns false
@@ -52,7 +61,16 @@ bool isValidMoveAvailable(char board[][SIZE], char disc)
 // Returns true if the board is fully occupied with discs; else returns false
 bool isBoardFull(char board[][SIZE])
 {
-	return false;	// REPLACE THIS WITH YOUR IMPLEMENTATION	
+
+	for (int i = 0; i < SIZE; i++)
+	{
+		for (int j = 0; j < SIZE; j++)
+		{
+			if(board[i][j] == '-')
+				return false;
+		}
+	}
+	return true;
 }
 
 // Returns true if either the board is full or a valid move is not available for either disc
